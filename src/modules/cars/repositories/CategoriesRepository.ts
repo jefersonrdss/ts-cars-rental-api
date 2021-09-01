@@ -1,19 +1,7 @@
 import { Category } from "../model/Category";
+import { ICategoriesRepository, ICreateCategoryDTO, IUpdateCategoryDTO } from "./ICategoriesRepository";
 
-// Interface Create Category DTO
-interface ICreateCategoryDTO {
-    name: string;
-    description: string;
-}
-
-// Interface Update Category DTO
-interface IUpdateCategoryDTO {
-    id: string;
-    name: string;
-    description: string;
-}
-
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
     private categories: Category[];
 
     // metodo list
