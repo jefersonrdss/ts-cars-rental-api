@@ -13,8 +13,9 @@ interface IUpdateCategoryDTO {
     description: string;
 }
 
+// metodos for implements
 interface ICategoriesRepository {
-    create({name, description}: ICreateCategoryDTO): void
+    create({name, description}: ICreateCategoryDTO): void;
     list(): Category[];
     findByName(name: string): Category;
 }
