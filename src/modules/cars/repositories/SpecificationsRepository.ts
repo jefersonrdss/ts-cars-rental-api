@@ -10,7 +10,7 @@ class SpecificationsRepository implements ISpecificationRepository {
     }
 
     // metodo list
-    list(): Specification[] { return this.specifications; }
+    list(): Specification[] { return this.specifications; };
 
     // metodo create
     create({ name, description }: ICreateSpecificationDTO): void {
