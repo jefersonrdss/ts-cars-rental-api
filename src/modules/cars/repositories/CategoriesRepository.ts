@@ -2,11 +2,21 @@ import { Category } from "../model/Category";
 import { ICategoriesRepository, ICreateCategoryDTO, IUpdateCategoryDTO } from "./ICategoriesRepository";
 
 class CategoriesRepository implements ICategoriesRepository {
+    
     private categories: Category[];
+    private static INSTANCE: CategoriesRepository;
 
     // constructor inicialize categories array
-    constructor() {
+    private constructor() {
         this.categories = [];
+    }
+
+    public static getInstance(){
+        if (!CategoriesRepository.INSTANCE){
+            CategoriesRepository.INSTANCE = new CategoriesRepository();
+        }
+
+        return CategoriesRepository.INSTANCE;
     }
 
     // metodo list
