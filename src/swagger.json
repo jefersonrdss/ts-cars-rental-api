@@ -1,0 +1,210 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "RentalX API",
+        "description": "RentalX - Cars Rental API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/categories": {
+            "post": {
+                "tags": ["Module Category"],
+                "summary": "Create category",
+                "description": "Create a new category",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "name": "Category name sample",
+                                "description": "Category description sample"
+                            },
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Category's name already exists"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Module Category"],
+                "summary": "List categories",
+                "description": "List all registered categories",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "uuid": "123e4567-e89b-12d3-a456-426614174000",
+                                        "name": "Category name sample 1",
+                                        "description": "Category description sample 2",
+                                        "created_at": "2021-09-03T23:19:03.999Z"
+                                    },
+                                    {
+                                        "uuid": "8bba22d1-37bf-4591-a2b2-be90bc3d1c58",
+                                        "name": "Category name sample 2",
+                                        "description": "Category description sample 2",
+                                        "created_at": "2021-09-04T23:19:03.999Z"
+                                    }
+                                ],
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "uuid": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "string" 
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/import": {
+            "post": {
+                "tags": ["Module Category"],
+                "summary": "Create categories from file",
+                "description": "Create categories from an imported file",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "example": {
+                                "file": "categories.csv"
+                            },
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "text/csv"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Categories created successfully"
+                    },
+                    "400": {
+                        "description": "Category's name already exists"
+                    }
+                }
+            }
+        },
+        "/specifications": {
+            "post": {
+                "tags": ["Module Specification"],
+                "summary": "Create specification",
+                "description": "Create a new specification",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "name": "Specification name sample",
+                                "description": "Specification description sample"
+                            },
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Specification created successfully"
+                    },
+                    "400": {
+                        "description": "Specification's name already exists"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Module Specification"],
+                "summary": "List specifications",
+                "description": "List all registered specifications",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "uuid": "123e4567-e89b-12d3-a456-426614174000",
+                                        "name": "Specification name sample 1",
+                                        "description": "Specification description sample 2",
+                                        "created_at": "2021-09-03T23:19:03.999Z"
+                                    },
+                                    {
+                                        "uuid": "8bba22d1-37bf-4591-a2b2-be90bc3d1c58",
+                                        "name": "Specification name sample 2",
+                                        "description": "Specification description sample 2",
+                                        "created_at": "2021-09-04T23:19:03.999Z"
+                                    }
+                                ],
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "uuid": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "string" 
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
