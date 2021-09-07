@@ -3,6 +3,8 @@ import { router } from "./routes";
 import swaggerUi, { setup } from "swagger-ui-express";
 import swaggerFile from "./swagger.json";
 
+import "./database";
+
 const server = express();
 
 server.use(express.json());

@@ -1,0 +1,7 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "username": "appuser",
+    "password": "pass123",
+    "database": "cars-rental"
+}
