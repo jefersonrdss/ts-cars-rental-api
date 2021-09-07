@@ -6,10 +6,10 @@ class ListCategoriesController {
 
     constructor (private listCategoryUseCase: ListCategoriesUseCase) {}
 
-    handle(request: Request, response: Response): Response {
-        return response.status(200).json(
-            this.listCategoryUseCase.execute()
-        );
+    async handle(request: Request, response: Response): Promise<Response> {
+        
+        const categories = await this.listCategoryUseCase.execute();
+        return response.status(200).json(categories);
     }
 }
 

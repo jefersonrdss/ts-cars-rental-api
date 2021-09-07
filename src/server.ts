@@ -1,9 +1,9 @@
 import express from "express";
+import "./database";
 import { router } from "./routes";
-import swaggerUi, { setup } from "swagger-ui-express";
+import swaggerUi from "swagger-ui-express";
 import swaggerFile from "./swagger.json";
 
-import "./database";
 
 const server = express();
 
