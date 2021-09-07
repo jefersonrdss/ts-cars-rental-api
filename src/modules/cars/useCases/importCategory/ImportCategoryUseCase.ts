@@ -1,10 +1,16 @@
 import fs from "fs";
 import csvParse from "csv-parse";
 import { ICategoriesRepository, ICreateCategoryDTO } from "../../repositories/ICategoriesRepository";
+import { inject, injectable } from "tsyringe";
+import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
 
+@injectable()
 class ImportCategoryUseCase {
 
-    constructor(private categoriesRepository: ICategoriesRepository) { }
+    constructor(
+        @inject(CategoriesRepository)
+        private categoriesRepository: ICategoriesRepository
+    ) {}
 
     //load categories from file uploaded
     private loadCategories(file: Express.Multer.File): Promise<ICreateCategoryDTO[]> {
