@@ -1,6 +1,6 @@
 import { getRepository, Repository } from "typeorm";
-import { User } from "../../entities/User";
-import { IUsersRepository, IUsersRepositoryDTO } from "../IUsersRepository";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
+import { IUsersRepository, IUsersRepositoryDTO } from "../../../repositories/IUsersRepository";
 
 
 class UsersRepository implements IUsersRepository {
@@ -25,9 +25,12 @@ class UsersRepository implements IUsersRepository {
     }
     
     async updateAvatar(id: string, filename: string): Promise<void> {
-        const user = await this.repository.findOne(id);
-        user.avatar = filename;
-        await this.repository.save(user);
+        
+        await this.repository.query(`UPDATE users SET avatar='${filename}' WHERE id = '${id}'`);
+        
+        // const user = await this.repository.findOne(id);
+        // user.avatar = filename;
+        // await this.repository.save(user);
     }
     
     list(): Promise<User[]> {

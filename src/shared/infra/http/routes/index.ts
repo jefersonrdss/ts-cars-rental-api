@@ -5,6 +5,7 @@ import { specificationsRoutes } from "./specifications.routes";
 import { usersRoutes } from "./users.routes";
 import { authenticateRoutes } from "./authenticate.routes";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+import { carsRoutes } from "./cars.routes";
 
 const router = Router();
 
@@ -13,7 +14,8 @@ router.use(authenticateRoutes);
 
 // Authencicated routes
 router.use(ensureAuthenticated); // Middleware for ensure user authenticated
-router.use(categoriesRoutes);
-router.use(specificationsRoutes);
+router.use(categoriesRoutes); // categories
+router.use(specificationsRoutes); // specifications
+router.use(carsRoutes); // cars
 
 export { router };

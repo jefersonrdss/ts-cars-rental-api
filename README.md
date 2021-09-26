@@ -1,2 +1,2 @@
-## Cars Rental API - Typescript Project
+## **Cars Rental API - Typescript Project**
 ---

@@ -1,8 +1,8 @@
 import fs from "fs";
 import csvParse from "csv-parse";
-import { ICategoriesRepository, ICreateCategoryDTO } from "../../repositories/ICategoriesRepository";
+import { ICategoriesRepository, ICreateCategoryDTO } from "@modules/cars/repositories/ICategoriesRepository";
 import { inject, injectable } from "tsyringe";
-import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
+import { CategoriesRepository } from "@modules/cars/infra/typeorm/repositories/CategoriesRepository";
 
 @injectable()
 class ImportCategoryUseCase {
