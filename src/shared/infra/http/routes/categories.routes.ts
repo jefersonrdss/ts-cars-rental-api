@@ -6,6 +6,8 @@ import { ImportCategoryController } from "@modules/cars/useCases/importCategory/
 
 // for import file
 import multer from "multer";
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+import ensureAdmin from "../middlewares/ensureAdmin";
 const upload = multer({ dest: "./tmp" });
 
 const categoriesRoutes = Router(); // for create routes
@@ -15,8 +17,25 @@ const listCategoriesController = new ListCategoriesController();
 const importCategoryController = new ImportCategoryController();
 
 /** ROUTES */
-categoriesRoutes.post("/categories", createCategoryController.handle); // Route for create categories
-categoriesRoutes.get("/categories", listCategoriesController.handle); // Route for get categories
-categoriesRoutes.post("/categories/import", upload.single("file"), importCategoryController.handle); // Route for create all categories from imported file
+categoriesRoutes.post(
+    "/categories",
+    ensureAuthenticated,
+    ensureAdmin,
+    createCategoryController.handle
+); // Route for create categories
+
+categoriesRoutes.get(
+    "/categories",
+    ensureAuthenticated,
+    listCategoriesController.handle
+); // Route for get categories
+
+categoriesRoutes.post(
+    "/categories/import",
+    ensureAuthenticated,
+    ensureAdmin,
+    upload.single("file"),
+    importCategoryController.handle
+); // Route for create all categories from imported file
 
 export { categoriesRoutes };

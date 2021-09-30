@@ -9,11 +9,8 @@ import { carsRoutes } from "./cars.routes";
 
 const router = Router();
 
-router.use(usersRoutes);
-router.use(authenticateRoutes);
-
-// Authencicated routes
-router.use(ensureAuthenticated); // Middleware for ensure user authenticated
+router.use(usersRoutes); // users
+router.use(authenticateRoutes); // for authenticate
 router.use(categoriesRoutes); // categories
 router.use(specificationsRoutes); // specifications
 router.use(carsRoutes); // cars

@@ -6,6 +6,7 @@ import { CreateUserController } from "@modules/accounts/useCases/createUser/Crea
 import { ListUsersController } from "@modules/accounts/useCases/listUser/ListUsersController";
 import { UpdateUserAvatarController } from "@modules/accounts/useCases/updateUserAvatar/UpdateUserAvatarController";
 import uploadConfig from "@config/upload";
+import ensureAdmin from "../middlewares/ensureAdmin";
 
 const usersRoutes = Router();
 
@@ -15,11 +16,28 @@ const createUserController = new CreateUserController();
 const listUsersController = new ListUsersController();
 const updateUserAvatarController = new UpdateUserAvatarController();
 
-usersRoutes.post("/users", createUserController.handle);
+// create user
+usersRoutes.post(
+    "/users",
+    ensureAuthenticated,
+    createUserController.handle
+);
 
-// Authenticated Routes
-usersRoutes.get("/users", listUsersController.handle );
-usersRoutes.patch("/users/avatar", ensureAuthenticated, uploadAvatar.single("avatar"), updateUserAvatarController.handle);
+// list users
+usersRoutes.get(
+    "/users",
+    ensureAuthenticated,
+    ensureAdmin,
+    listUsersController.handle
+);
+
+// add user avatar
+usersRoutes.patch(
+    "/users/avatar",
+    ensureAuthenticated,
+    uploadAvatar.single("avatar"),
+    updateUserAvatarController.handle
+);
 
 
 export { usersRoutes };
