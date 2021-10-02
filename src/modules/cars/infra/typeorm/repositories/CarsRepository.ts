@@ -20,17 +20,21 @@ class CarsRepository implements ICarsRepository {
             license_plate,
             fine_amount,
             brand,
-            category_id
+            category_id,
+            specifications,
+            id
         } = data;
 
         const car = this.repository.create({
+            id,
             name,
             description,
             daily_rate,
             license_plate,
             fine_amount,
             brand,
-            category_id
+            category_id,
+            specifications
         });
 
         await this.repository.save(car);
@@ -71,6 +75,10 @@ class CarsRepository implements ICarsRepository {
         return car;
     }
 
+    async findById(id: string): Promise<Car> {
+        const car  = await this.repository.findOne(id);
+        return car;
+    }
 }
 
 export { CarsRepository }

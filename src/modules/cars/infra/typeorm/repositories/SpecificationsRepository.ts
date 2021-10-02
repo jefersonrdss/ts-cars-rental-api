@@ -19,7 +19,7 @@ class SpecificationsRepository implements ISpecificationRepository {
     }
 
     // metodo create
-    async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
+    async create({ name, description }: ICreateSpecificationDTO): Promise<Specification> {
         
         // cria uma instancia da entidade specification para save
         const specification = this.repository.create({
@@ -28,12 +28,20 @@ class SpecificationsRepository implements ISpecificationRepository {
         });
 
         await this.repository.save(specification);
+
+        return specification;
     }
 
     // metodo find by name
     async findByName(name: string): Promise<Specification> {
         const specification = await this.repository.findOne({ name });
         return specification;
+    }
+
+    async findByIds(ids: string[]): Promise<Specification[]> {
+        
+        const specifications = await this.repository.findByIds(ids);
+        return specifications;
     }
 }
 
