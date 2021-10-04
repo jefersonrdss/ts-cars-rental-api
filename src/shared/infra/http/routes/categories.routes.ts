@@ -3,11 +3,11 @@ import { Router } from "express";
 import { CreateCategoryController } from "@modules/cars/useCases/createCategory/CreateCategoryController";
 import { ListCategoriesController } from "@modules/cars/useCases/listCategories/ListCategoriesController";
 import { ImportCategoryController } from "@modules/cars/useCases/importCategory/ImportCategoryController";
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+import ensureAdmin from "../middlewares/ensureAdmin";
 
 // for import file
 import multer from "multer";
-import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
-import ensureAdmin from "../middlewares/ensureAdmin";
 const upload = multer({ dest: "./tmp" });
 
 const categoriesRoutes = Router(); // for create routes

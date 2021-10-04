@@ -4,7 +4,6 @@ import { categoriesRoutes } from "./categories.routes";
 import { specificationsRoutes } from "./specifications.routes";
 import { usersRoutes } from "./users.routes";
 import { authenticateRoutes } from "./authenticate.routes";
-import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { carsRoutes } from "./cars.routes";
 
 const router = Router();
